@@ -1,111 +1,150 @@
+@import "tailwindcss";
+
+/* ROOT – LIGHT MODE */
 :root {
-  --text: #6b6375;
-  --text-h: #08060d;
-  --bg: #fff;
-  --border: #e5e4e7;
-  --code-bg: #f4f3ec;
-  --accent: #aa3bff;
-  --accent-bg: rgba(170, 59, 255, 0.1);
-  --accent-border: rgba(170, 59, 255, 0.5);
-  --social-bg: rgba(244, 243, 236, 0.5);
-  --shadow:
-    rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
+  /* Backgrounds */
+  --bg-main: #ffffff;
+  --bg-secondary: #f7f7f7;
+  --bg-gradient: linear-gradient(
+  135deg,
+  #ecfdf5,
+  #d1fae5,
+  #a7f3d0
+);
 
-  --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --mono: ui-monospace, Consolas, monospace;
+  /* Text */
+  --text-main: #191919; 
+  --text-secondary: #212121;
 
-  font: 18px/145% var(--sans);
-  letter-spacing: 0.18px;
-  color-scheme: light dark;
-  color: var(--text);
-  background: var(--bg);
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  /* Accent Colors */
+  --accent-primary: rgb(26, 124, 26);
+  --accent-secondary: #66bb6a;
 
-  @media (max-width: 1024px) {
-    font-size: 16px;
+  /* Borders */
+  --border-light: #e0e0e0;
+}
+
+/* DARK MODE */
+.dark {
+  /* Backgrounds */
+  --bg-main: #0b0b0b; 
+  --bg-secondary: #0f0f0f;
+--bg-gradient: linear-gradient(
+  135deg,
+  #022c17,
+  #064e2e,
+  #065f2b
+);
+
+  /* Text */
+  --text-main: #d4d4d4;
+  --text-secondary: #d4d4d4;
+
+  /* Accent Colors */
+  --accent-primary: #66bb6a;
+  --accent-secondary: #66bb6a;
+
+  /* Borders */
+  --border-light: #1f1f1f;
+}
+
+/* Smooth transition for all theme-dependent properties */
+/* * {
+  transition: background-color 0.4s ease, color 0.4s ease,
+    border-color 0.4s ease;
+} */
+
+@font-face {
+  font-family: "Heading";
+  src: url("./assets/fonts/head.ttf") format("truetype");
+  font-display: swap;
+}
+
+.font-heading {
+  font-family: "Heading", sans-serif;
+  /* font-style: italic; */
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
   }
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --text: #9ca3af;
-    --text-h: #f3f4f6;
-    --bg: #16171d;
-    --border: #2e303a;
-    --code-bg: #1f2028;
-    --accent: #c084fc;
-    --accent-bg: rgba(192, 132, 252, 0.15);
-    --accent-border: rgba(192, 132, 252, 0.5);
-    --social-bg: rgba(47, 48, 58, 0.5);
-    --shadow:
-      rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
-  }
-
-  #social .button-icon {
-    filter: invert(1) brightness(2);
-  }
+.marquee {
+  animation: marquee linear infinite;
 }
 
-#root {
-  width: 1126px;
-  max-width: 100%;
-  margin: 0 auto;
-  text-align: center;
-  border-inline: 1px solid var(--border);
-  min-height: 100svh;
-  display: flex;
-  flex-direction: column;
-  box-sizing: border-box;
+/* ==================================== SELECTION ====================================  */
+
+::selection {
+  background: #16a34a;
+  color: #ffffff;
 }
 
-body {
-  margin: 0;
+::-moz-selection {
+  background: #16a34a;
+  color: #ffffff;
 }
 
-h1,
-h2 {
-  font-family: var(--heading);
-  font-weight: 500;
-  color: var(--text-h);
+.my-text::selection {
+  background: #10b981;
+  color: #ffffff;
+}
+.my-text::-moz-selection {
+  background: #10b981;
+  color: #ffffff;
 }
 
-h1 {
-  font-size: 56px;
-  letter-spacing: -1.68px;
-  margin: 32px 0;
-  @media (max-width: 1024px) {
-    font-size: 36px;
-    margin: 20px 0;
-  }
+input::selection,
+textarea::selection {
+  background: #16a34a;
+  color: #ffffff;
 }
-h2 {
-  font-size: 24px;
-  line-height: 118%;
-  letter-spacing: -0.24px;
-  margin: 0 0 8px;
-  @media (max-width: 1024px) {
-    font-size: 20px;
-  }
-}
-p {
-  margin: 0;
+input::-moz-selection,
+textarea::-moz-selection {
+  background: #16a34a;
+  color: #ffffff;
 }
 
-code,
-.counter {
-  font-family: var(--mono);
-  display: inline-flex;
-  border-radius: 4px;
-  color: var(--text-h);
+/* ==================================== SELECTION ====================================  */
+
+/* Autofill Transparent background */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+select:-webkit-autofill {
+  -webkit-text-fill-color: var(--text-main);
+  -webkit-box-shadow: 0 0 0px 1000px transparent inset;
+  transition: background-color 9999s ease-in-out 0s;
 }
 
-code {
-  font-size: 15px;
-  line-height: 135%;
-  padding: 4px 8px;
-  background: var(--code-bg);
+.dark input:-webkit-autofill,
+.dark textarea:-webkit-autofill {
+  -webkit-text-fill-color: var(--text-main);
+}
+
+
+
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+::view-transition-old(root) {
+  z-index: -1;
+}
+
+::view-transition-new(root) {
+  z-index: 9999;
 }
