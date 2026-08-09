@@ -1,51 +1,105 @@
 @import "tailwindcss";
 
-/* ROOT – LIGHT MODE */
+@import "tailwindcss";
+
 :root {
-  /* Backgrounds */
   --bg-main: #ffffff;
   --bg-secondary: #f7f7f7;
-  --bg-gradient: linear-gradient(
-  135deg,
-  #ecfdf5,
-  #d1fae5,
-  #a7f3d0
-);
 
-  /* Text */
-  --text-main: #191919; 
+  --text-main: #191919;
   --text-secondary: #212121;
 
-  /* Accent Colors */
   --accent-primary: rgb(26, 124, 26);
   --accent-secondary: #66bb6a;
 
-  /* Borders */
   --border-light: #e0e0e0;
+
+  --bg-gradient: linear-gradient(
+    135deg,
+    #ecfdf5,
+    #d1fae5,
+    #a7f3d0
+  );
 }
 
-/* DARK MODE */
 .dark {
-  /* Backgrounds */
-  --bg-main: #0b0b0b; 
+  --bg-main: #0b0b0b;
   --bg-secondary: #0f0f0f;
---bg-gradient: linear-gradient(
-  135deg,
-  #022c17,
-  #064e2e,
-  #065f2b
-);
 
-  /* Text */
   --text-main: #d4d4d4;
   --text-secondary: #d4d4d4;
 
-  /* Accent Colors */
   --accent-primary: #66bb6a;
   --accent-secondary: #66bb6a;
 
-  /* Borders */
   --border-light: #1f1f1f;
+
+  --bg-gradient: linear-gradient(
+    135deg,
+    #022c17,
+    #064e2e,
+    #065f2b
+  );
+}
+
+/* Global page theme */
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+html,
+body {
+  margin: 0;
+  background: var(--bg-main);
+  color: var(--text-main);
+
+  transition:
+    background-color 0.4s ease,
+    color 0.4s ease;
+}
+
+#root {
+  min-height: 100vh;
+  background: var(--bg-main);
+  color: var(--text-main);
+}
+
+/* Theme-aware elements */
+
+.theme-bg {
+  background-color: var(--bg-main);
+}
+
+.theme-bg-secondary {
+  background-color: var(--bg-secondary);
+}
+
+.theme-text {
+  color: var(--text-main);
+}
+
+.theme-text-secondary {
+  color: var(--text-secondary);
+}
+
+.theme-border {
+  border-color: var(--border-light);
+}
+
+.theme-gradient {
+  background: var(--bg-gradient);
+}
+
+/* Smooth transitions */
+
+* {
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease,
+    border-color 0.3s ease;
 }
 
 /* Smooth transition for all theme-dependent properties */

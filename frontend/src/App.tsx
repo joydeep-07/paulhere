@@ -1,4 +1,7 @@
+import { useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+
+import { useAppSelector } from "./redux/hooks";
 
 import Root from "./layouts/Root";
 import Home from "./pages/Home";
@@ -7,6 +10,17 @@ import Contact from "./pages/Contact";
 import Projects from "./pages/Projects";
 
 const App = () => {
+  const theme = useAppSelector((state) => state.theme.mode);
+
+  useEffect(() => {
+    const html = document.documentElement;
+
+    html.classList.remove("light", "dark");
+    html.classList.add(theme);
+
+    localStorage.setItem("theme", theme);
+  }, [theme]);
+
   return (
     <BrowserRouter>
       <Routes>

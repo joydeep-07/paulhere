@@ -4,10 +4,12 @@ import Navbar from "./Navbar"
 const Root = () => {
   return (
     <div>
-        <Navbar/>
-        <Outlet/>
+      <Navbar />
+      <div className="min-h-screen bg-(--bg-main) text-(--text-main)">
+        <Outlet />
+      </div>
     </div>
-  )
+  );
 }
 
 export default Root
